@@ -7,7 +7,6 @@ def main():
     sys.stdout.flush()
 
     # Wait for user input
-    input()
     command=input()
     """no_space=command.strip()
     if no_space:
