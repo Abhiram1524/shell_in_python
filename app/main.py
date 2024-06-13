@@ -16,7 +16,7 @@ def main():
             if cmd[1] in commands:
                 sys.stdout.write(f"{cmd[1]} is a shell builtin\n")
             else:
-                sys.stdout.write(f"{cmd[1]}: not found")
+                sys.stdout.write(f"{cmd[1]}: not found\n")
         else:
             sys.stdout.write(f"{command}: command not found\n")
         
