@@ -14,7 +14,7 @@ def main():
             sys.stdout.write(" ".join(cmd[1:]) + "\n")
         elif cmd[0]=="type":
             if cmd[1] in commands:
-                sys.stdout.write(f"{cmd[1]} is a shell builtin")
+                sys.stdout.write(f"{cmd[1]} is a shell builtin\n")
             else:
                 sys.stdout.write(f"{cmd[1]}: not found")
         else:
