@@ -2,6 +2,7 @@ import sys
 
 
 def main():
+    while true:
     
     sys.stdout.write("$ ")
     sys.stdout.flush()
