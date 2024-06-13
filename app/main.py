@@ -6,7 +6,11 @@ def main():
         sys.stdout.write("$ ")
         sys.stdout.flush()
         command=input()
-        sys.stdout.write(f"{command}: command not found\n")
+        cmd=command.split()
+        if command=="exit 0":
+            sys.exit(0)
+        else:
+            sys.stdout.write(f"{command}: command not found\n")
     
 
 
