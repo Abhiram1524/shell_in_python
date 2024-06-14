@@ -37,7 +37,7 @@ def main():
             try:
                 subprocess.run(cmd)
             except FileNotFoundError:
-                sys.stdout.write(f"{cmd[0]}:command not found\n")
+                sys.stdout.write(f"{cmd[0]}: command not found\n")
             except Exception as e:
                  sys.stdout.write(f"Error executing {cmd[0]}: {str(e)}\n")
 
