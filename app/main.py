@@ -3,7 +3,7 @@ import os
 import subprocess
 
 # Define a set of built-in commands
-commands = {"exit", "echo", "type"}
+commands = {"exit", "echo", "type","cd"}
 
 def main():
     while True:
