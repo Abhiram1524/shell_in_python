@@ -3,7 +3,7 @@ import os
 import subprocess
 
 # Define a set of built-in commands
-commands = {"exit", "echo", "type","cd"}
+commands = {"exit", "echo", "type", "cd"}
 
 def main():
     while True:
@@ -35,26 +35,34 @@ def main():
                 sys.stdout.write("type: usage: type command\n")
         elif cmd[0] == "cd":
             if len(cmd) > 1:
-                try:
-                    os.chdir(cmd[1])
-                except FileNotFoundError:
-                    sys.stdout.write(f"cd: {cmd[1]}: No such file or directory\n")
-                except PermissionError:
-                    sys.stdout.write(f"cd: {cmd[1]}: Permission denied\n")
-                except Exception as e:
-                    sys.stdout.write(f"cd: {cmd[1]}: {str(e)}\n")
+                if cmd[1] == "~":
+                    home_dir = os.environ.get("HOME")
+                    try:
+                        os.chdir(home_dir)
+                    except FileNotFoundError:
+                        sys.stdout.write(f"cd: {home_dir}: No such file or directory\n")
+                    except PermissionError:
+                        sys.stdout.write(f"cd: {home_dir}: Permission denied\n")
+                    except Exception as e:
+                        sys.stdout.write(f"cd: {home_dir}: {str(e)}\n")
+                else:
+                    try:
+                        os.chdir(cmd[1])
+                    except FileNotFoundError:
+                        sys.stdout.write(f"cd: {cmd[1]}: No such file or directory\n")
+                    except PermissionError:
+                        sys.stdout.write(f"cd: {cmd[1]}: Permission denied\n")
+                    except Exception as e:
+                        sys.stdout.write(f"cd: {cmd[1]}: {str(e)}\n")
             else:
-                sys.stdout.write("cd: usage: cd directory\n")    
+                sys.stdout.write("cd: usage: cd directory\n")
         else:
             try:
                 subprocess.run(cmd)
             except FileNotFoundError:
                 sys.stdout.write(f"{cmd[0]}: command not found\n")
             except Exception as e:
-                 sys.stdout.write(f"Error executing {cmd[0]}: {str(e)}\n")
-
-            
-    
+                sys.stdout.write(f"Error executing {cmd[0]}: {str(e)}\n")
 
 if __name__ == "__main__":
     main()
