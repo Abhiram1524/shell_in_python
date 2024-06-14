@@ -33,7 +33,7 @@ def main():
                         sys.stdout.write(f"{target_command}: not found\n")
             else:
                 sys.stdout.write("type: usage: type command\n")
-         elif cmd[0] == "cd":
+        elif cmd[0] == "cd":
             if len(cmd) > 1:
                 try:
                     os.chdir(cmd[1])
