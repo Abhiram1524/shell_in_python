@@ -33,6 +33,18 @@ def main():
                         sys.stdout.write(f"{target_command}: not found\n")
             else:
                 sys.stdout.write("type: usage: type command\n")
+         elif cmd[0] == "cd":
+            if len(cmd) > 1:
+                try:
+                    os.chdir(cmd[1])
+                except FileNotFoundError:
+                    sys.stdout.write(f"cd: {cmd[1]}: No such file or directory\n")
+                except PermissionError:
+                    sys.stdout.write(f"cd: {cmd[1]}: Permission denied\n")
+                except Exception as e:
+                    sys.stdout.write(f"cd: {cmd[1]}: {str(e)}\n")
+            else:
+                sys.stdout.write("cd: usage: cd directory\n")    
         else:
             try:
                 subprocess.run(cmd)
